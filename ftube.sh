@@ -3,6 +3,7 @@
 # Bash script based on youtube-dl and ffmpeg tools
 
 # Insert copied link and do next:
+# 0. Paste your URL
 # 1. List all available format
 # 2. Choose format and download
 # 3. List your current directory
