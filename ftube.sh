@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Script based on youtube-dl and ffmpeg tools
+# Bash script based on youtube-dl and ffmpeg tools
+
 # Insert copied link and do next:
 # 1. List all available format
 # 2. Choose format and download
 # 3. List your current directory
 # 4. Extract MP3 audio track from video
 # 5. Convert MP4 video to MP3 audio
-# 6. Convert MP4 video to OGG audio
+# 6. Convert MP4 video to 0GG aPaste the URLo
 # 7. Convert MP3 audio to OGG audio
 # ============================================
 clear
@@ -45,7 +46,7 @@ function echo_if {
 }
 
 # main script
-printf "\e[33mPaste your link or continue with ENTER: "; read link
+printf "\e[33mPaste the copied link here: "; read link
 printf "\033[0m"
 while :
 do	  
@@ -53,15 +54,16 @@ echo -e "\n***********************"
 printf "\tM E N U\n"
 echo "***********************"
 echo -e "youtube-dl commands..."
+echo "[0] - Paste the URL"
 echo "[1] - List all available format for your link"
 echo "[2] - Download link"
 echo "[3] - Extract MP3 audio track"
 echo -e "******************************"
 echo "***************************************************"
-echo "[4] - List your current directory where you are now"
+echo "[4] - View files in current directory"
 echo "***************************************************"
 echo -e "\nFFMPEG commands..."
-printf "\e[33mTo convert video format to audio format\nyou need to have installed on your system FFMPEG"
+printf "\e[33mTo convert video format to audio format\nyou must have installed on your system FFMPEG"
 printf "\033[0m\n"
 echo "[5] - Convert MP4 video to MP3 audio"
 echo "[6] - Convert MP4 video to OGG audio"
@@ -70,21 +72,27 @@ echo -e "************************************"
 echo "[8] - Open audio/video file"
 echo "[9] - Exit Script"
 echo -e "***************************\n"
-read -r -p "Enter your choice [1-9]: " c
+read -r -p "Enter your choice [0-9]: " c
 
 # c = 1,2,3 ...
 case $c in
+0)
+	printf "\e[33mPaste the copied link here: "; 
+	read link;
+	printf "\033[0m";;
+
 1) 
 	youtube-dl -F $link;;
 
-2) 	printf "Choose the above code format of the link to download: "
+2) 	printf "Choose the URL's code for downloading: "
 	read formatCode
 	youtube-dl -f $formatCode --ignore-config --restrict-filenames --youtube-skip-dash-manifest --console-title -o '%(title)s.%(ext)s' $link;;
 
 3)
 	youtube-dl -x --audio-format mp3 --audio-quality 0 --restrict-filenames --youtube-skip-dash-manifest --console-title -o '%(title)s.%(ext)s' --ignore-config $link;;
 
-4) 	echo -e "\nYour multimedia files are next:\n" 
+4) 	echo -e "\nYour Current Directory is:\n"; pwd
+	echo -e "\nYour multimedia files are next:\n"
 	ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$';;
 
 5)
@@ -126,54 +134,54 @@ case $c in
 	echo -e "[g] -> Deadbeef $(echo_if $(program_is_installed deadbeef))"
 	echo -e "[h] -> Banshee $(echo_if $(program_is_installed banshee))"
 	echo -e "[0] -> Exit"
-	read -r -p "Choose your favourite player who is installed in system: " players
+	read -r -p "Choose your favourite player which is installed in system: " players
 
 		case $players in
 			a) 
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				cvlc $file2open;
 				break;;
 			b) 	
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				mpv $file2open;
 				break;;
 			c) 	
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				xplayer $file2open;
 				break;;
 			d) 	
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				smplayer $file2open;
 				break;;
 			e) 	
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				mplayer $file2open;
 				break;;
 			f) 	
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				clementine $file2open;
 				break;;
 			g) 	
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				deadbeef $file2open;
 				break;;
 			h) 	
 				ls -shF1 | egrep '\.mp4$|\.mp3$|\.ogg$|\.webm$|\.exe$'
-				printf "File to open: " 
+				printf "Open file: " 
 				read -r file2open
 				banshee $file2open;
 				break;;
@@ -184,6 +192,6 @@ case $c in
 #break;;
 continue;;
 9) exit;;
-*) echo "Select between 1 to 9 only";;
+*) echo "Select between 0 to 9 only";;
 esac
 done
