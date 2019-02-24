@@ -15,7 +15,7 @@ echo "3. Open ZaycevFM New Rock"
 echo "4. Open ZaycevFM Disco"
 echo "5. Exit Script"
 echo "<********************************>"
-read -r -p "Enter your choice [1-4] : " option
+read -r -p "Enter your choice [1-5] : " option
 
 case $option in
 1) echo 'Starting MuzFM...: ';  mpv http://live.muzfm.md:8000/muzfm;;
