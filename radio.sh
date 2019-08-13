@@ -27,6 +27,6 @@ case $option in
 5) echo 'Starting Concept Radio'; mpv http://manager.conceptradio.fr:1460/stream;;
 6) echo 'Starting Rock Mixx'; http://113fm-edge2.cdnstream.com/5165_128;;
 7) exit;;
-*) echo -e "\e[033mJust select between 1 and 6\n\033[0m"
+*) echo -e "\e[033mSelect just between 1 and 7\n\033[0m"
 esac
 done
