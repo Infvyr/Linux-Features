@@ -16,10 +16,9 @@ echo "4. Open ZaycevFM Club"
 echo "5. Open Concept Radio"
 echo "6. Open Rock Mixx"
 echo "7. Open Radio Mix"
-echo "8. Open Love Radio"
-echo "9. Exit Script"
+echo "8. Exit Script"
 echo "<********************************>"
-read -r -p "Enter your choice [1-9] : " option
+read -r -p "Enter your choice [1-8] : " option
 
 case $option in
 1) echo 'Starting MuzFM...: ';  mpv http://live.muzfm.md:8000/muzfm;;
@@ -29,8 +28,7 @@ case $option in
 5) echo 'Starting Concept Radio...'; mpv http://manager.conceptradio.fr:1460/stream;;
 6) echo 'Starting Rock Mixx...'; mpv http://113fm-edge2.cdnstream.com/5165_128;;
 7) echo 'Starting the radio station...'; mpv http://91.121.136.191:8028/live;;
-8) echo 'Starting Love Radio...'; mpv http://ilr1.iloveradio.de:8000/iloveradio1-aac.mp3;;
-9) exit;;
-*) echo -e "\e[033mSelect just between 1 and 9\n\033[0m"
+8) exit;;
+*) echo -e "\e[033mSelect just between 1 and 8\n\033[0m"
 esac
 done
