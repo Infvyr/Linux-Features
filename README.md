@@ -1,4 +1,3 @@
-# Linux-Features
 <h1>Small bash scripts</h1>
 
 Here I added some Bash scripts made while I was using Linux distros.
